@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html dir="LTR" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Deploy to GitHub pages from Travis CI</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://iamstarkov.com/rss.xml" title="Vladimir Starkov" rel="alternate" type="application/rss+xml">
+    <link href="/styles.css" rel="stylesheet">
+    <meta property="og:site_name" content="Vladimir Starkov">
+    <meta property="article:author" content="https://iamstarkov.com/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@iamstarkov">
+    <meta property="description" content="Imagine that you have open-source project, which site is hosting on github pages
+and you have &quot;edit on github&quot; button on this site. It’s great, because if you
+are lucky, you will get few pull-requests every week. On the other side you
+will need laptop every time, you want to deploy changes and, you know,
+it’s a bit annoying.">
+    <meta name="og:url" content="deploy-gh-pages-from-travis/">
+    <meta name="og:image" content="https://i.imgur.com/U1K3xkv.png">
+    <meta name="og:title" content="Deploy to GitHub pages from Travis CI">
+    <meta name="og:description" content="Imagine that you have open-source project, which site is hosting on github pages
+and you have &quot;edit on github&quot; button on this site. It’s great, because if you
+are lucky, you will get few pull-requests every week. On the other side you
+will need laptop every time, you want to deploy changes and, you know,
+it’s a bit annoying.">
+  </head>
+  <body>
+    <div class="wrap"><a href="https://github.com/iamstarkov/iamstarkov.github.io/edit/premaster/2015-20-deploy-gh-pages-from-travis.md" class="edit-link">edit on github</a>
+      <article>
+        <h1>Deploy to GitHub pages from Travis CI</h1><i>
+          <time>10 may 2015</time></i><p>Imagine that you have open-source project, which site is hosting on github pages
+and you have &quot;edit on github&quot; button on this site. It’s great, because if you
+are lucky, you will get few pull-requests every week. On the other side you
+will need laptop every time, you want to deploy changes and, you know,
+it’s a bit annoying.</p>
+<p>In this article will show how travis can help you with deploying your project’s
+site. I’ll not teach you how to build your site or how to use travis,
+I’m assuming, that you already have build step and deploy steps, which are
+working properly on your machine, and you know Travis CI basics.</p>
+<p>First of all, you will discover that Travis has no support for
+<a href="http://docs.travis-ci.com/user/deployment/">github pages deployment</a>. Okay. But we have deploy step,
+which are working fine, let’s try it. Unfortunately it will not work this way.
+For understanding this, why this happening, we need some travis intro.</p>
+<p>Travis will clone your repository, then test, build and deploy. And there are
+some pitfalls in the way Travis clone projects. First of all, travis doing
+it by <code>git</code> protocol and this protocol only for cloning (not pushing).
+Second problem is that Travis CI have no permissions to push anything to your
+repos. Let’s fix it. Also, travis cannot commit anything because
+of non-configured git environment, but it’s a minor problem.</p>
+<p><img src="https://i.imgur.com/U1K3xkv.png" alt="Travis CI" /></p>
+<h2>Deploying</h2>
+<p>Basically deploy step is pretty simple: commit build folder in another branch,
+and push it. Why it works on your machine and will not work on Travis? It is
+because you have configured git and proper permissions on your machine.</p>
+<h3>git environment</h3>
+<p>Let’s configure git on travis first. By this I mean, you need to provide
+credentials with with travis will commit build folder.</p>
+<pre><code>git config --global user.email &quot;your@gmail.com&quot;
+git config --global user.name &quot;your name&quot;
+</code></pre>
+<p>Add this lines to <code>before_script</code> section of your <em>.travis.yml</em>.</p>
+<h3>Fixing <code>git</code> protocol in <code>remote</code></h3>
+<p>This part is easy, we need to switch original <em>origin</em> remote with new
+appropriate one.</p>
+<pre><code>git remote rm origin
+git remote add origin https://github.com/user/repo.git
+</code></pre>
+<p>Yep, Add this lines to <code>before_script</code> section of your <em>.travis.yml</em> too.</p>
+<h3>Permission to push</h3>
+<p>It’s a tricky part, you need find out a secure way to pass your github
+credentials to travis. God bless GitHub—you can get your access token
+from <a href="https://github.com/settings/tokens">GitHub access token</a> page.</p>
+<blockquote>
+<p>Personal access tokens function like ordinary OAuth access tokens.
+They can be used instead of a password for Git over HTTPS, or can be
+used to authenticate to the API over Basic Authentication.<br />
+<a href="https://github.com/settings/tokens">from the tokens page</a></p>
+</blockquote>
+<p>Ok, you have your credential, but storing them in plaintext is bad idea,
+and you need more secure way to use it.
+God bless Travis—<a href="http://docs.travis-ci.com/user/encryption-keys/">you can use travis gem</a> to encrypt
+github token and it to your travis config.</p>
+<pre><code>gem install travis
+travis encrypt GH_TOKEN=&quot;github-token&quot; --add
+</code></pre>
+<p>After this step you will find new lines in your travis config:</p>
+<pre><code class="language-yml">env:
+  global:
+    secure: &quot;encrypted-github-token&quot;
+</code></pre>
+<p>Now you need to use this token in origin remote. It’s simple:</p>
+<pre><code>https://user:${GH_TOKEN}@github.com/user/repo.git
+</code></pre>
+<h2>Other pitfalls</h2>
+<h3>Failed builds for deployed branch</h3>
+<p>Once you deploy something travis will try to run tests there and will fail,
+because there is no travis config there. Go to settings and <em>turn on
+&quot;Build only if .travis.yml is present&quot; option</em> or you can also copy travis
+config to build folder, but I don’t like it.</p>
+<p><img src="https://i.imgur.com/KCTdobz.png" alt="travis options" /></p>
+<p>You will face this problem only if your &quot;deploy&quot; branch differs from <code>gh-pages</code>,
+e.g. you want to build site for your github user (repo <em>user.github.io</em>),
+in this case you need to push to master branch, unlike <code>gh-pages</code> branch in
+most cases, which is already ignored by travis.</p>
+<h3>Commits in branches will also be deployed</h3>
+<p>Yep, all the branches except deployed have <em>.travis.yml</em>. This issue can be
+easily resolved with <a href="http://docs.travis-ci.com/user/build-configuration/#White--or-blacklisting-branches">branches whitelisting</a>.</p>
+<pre><code>branches:
+  only:
+    - your-branch
+</code></pre>
+<h2>Final solution</h2>
+<p>It’s all about <code>.travis.yml</code>. It should look like this in the end:</p>
+<pre><code class="language-yml">branches:
+  only:
+    - your-branch
+before_script:
+  - git config --global user.email &quot;your@gmail.com&quot;
+  - git config --global user.name &quot;your name&quot;
+  - git remote rm origin
+  - git remote add origin https://user:${GH_TOKEN}@github.com/user/repo.git
+script: npm run deploy
+env:
+  global:
+    secure: encrypted-github-token
+</code></pre>
+<p>Relax and take a beer—travis will be deploying for you!</p>
+<p><em>Spend time on creating stuff, not deploying,<br />
+your <a href="https://iamstarkov.com">Vladimir Starkov</a></em></p>
+
+      </article>
+      <footer class="article-footer">
+        ★ ★ ★ <br/>
+        If you found "Deploy to GitHub pages from Travis CI" useful, please share it to your <a href="https://twitter.com/intent/tweet?url=https://iamstarkov.com/deploy-gh-pages-from-travis/&amp;text=Deploy to GitHub pages from Travis CI&amp;related=iamstarkov">followers in Twitter</a> or <a href="https://www.facebook.com/sharer.php?u=http://iamstarkov.com/deploy-gh-pages-from-travis/&amp;t=Deploy to GitHub pages from Travis CI">friends in Facebook</a>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5540883fde2e2639c70007e9');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://track.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

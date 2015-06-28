@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="LTR" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>commonmark-helpers is out!</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://iamstarkov.com/rss.xml" title="Vladimir Starkov" rel="alternate" type="application/rss+xml">
+    <link href="/styles.css" rel="stylesheet">
+    <meta property="og:site_name" content="Vladimir Starkov">
+    <meta property="article:author" content="https://iamstarkov.com/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@iamstarkov">
+    <meta property="description" content="commonmark-helpers passing all the tests!">
+    <meta name="og:url" content="commonmark-helpers-release/">
+    <meta name="og:image" content="https://i.imgur.com/CM0V0d4.png">
+    <meta name="og:title" content="commonmark-helpers is out!">
+    <meta name="og:description" content="commonmark-helpers passing all the tests!">
+  </head>
+  <body>
+    <div class="wrap"><a href="https://github.com/iamstarkov/iamstarkov.github.io/edit/premaster/2015-20-commonmark-helpers-release.md" class="edit-link">edit on github</a>
+      <article>
+        <h1><a href="https://www.npmjs.com/package/commonmark-helpers">commonmark-helpers</a> is out!</h1><i>
+          <time>10 may 2015</time></i><p><img src="https://i.imgur.com/CM0V0d4.png" alt="commonmark-helpers passing all the tests!" /></p>
+<p>Basically, with commonmark-helpers you can find desire elements in markdown document
+and process them in html or plaintext format.</p>
+<p>When I was creating this blog, I faced issue with extracting data from
+raw markdown also I wanted to try <a href="https://www.npmjs.com/package/commonmark">commonmark</a>, because
+I believe It will be standard for markdown in the future. Hopefully,
+commonmark have rich API for traversing AST tree for your markdown documents.</p>
+<p>Since I’m using it for several months, I can conclude, that commonmark
+is awesome and also that it’s API is in process of evolving. It’s not good,
+it’s not bad—it’s normal. I developed first version of this blog with
+commonmark itself, and this experience help me to understand what API helpers
+I need from commonmark. That was the birth of <em><a href="https://www.npmjs.com/package/commonmark-helpers">commonmark-helpers</a></em>.</p>
+<p>I was wrapping my head with these ideas for while, and then I finally
+implemented it today! It contains only <a href="https://github.com/iamstarkov/commonmark-helpers/blob/master/index.js">41 sloc</a>, it small and very
+easy to useful.</p>
+<p>Basicaly it contains three methods:</p>
+<ul>
+<li><code>html</code> — for converting markdown into html</li>
+<li><code>text</code> — for converting markdown into plain text</li>
+<li><code>match</code> — for matching nodes from AST tree — most valuable method in whole
+module. All other methods are minor or shortcuts to <code>match</code>.</li>
+</ul>
+<p>With <code>match</code> method you can pick any node of your markdown document:
+header, paragraph in simple cases, and for example first paragraph without
+date statement inside — in complicated cases. With a js closures you can store
+matching results and create something like <code>text</code> method:</p>
+<pre><code>const text = (input)=&gt; {
+  let res = '';
+  match(input, (event)=&gt; {
+    res += isString(literal(event)) ? literal(event) : '';
+  });
+  return res;
+}
+</code></pre>
+<p>Yep, <code>text</code> is implemented with <code>match</code>.</p>
+<p>Very important to notice, that this package is very simple and doesn’t contain
+any smart and/or complicated logic, that’s why it’s tightly coupled with
+<a href="https://github.com/jgm/commonmark.js#usage">commonmark API for AST tree</a>. Check it out first.</p>
+<p>Of course, it’s covered with tests. If you want to do something with markdown
+for youself try <a href="https://www.npmjs.com/package/commonmark">commonmark</a> and these <a href="https://www.npmjs.com/package/commonmark-helpers">helpers</a>.
+Patches are welcomed, If you spot any error, feel free to <a href="https://github.com/iamstarkov/commonmark-helpers/issues/new">file an issue</a>.</p>
+<p>I hope these helpers will be useful for commonmark community
+and if so, then some of the features probably will be migrated to commonmark
+itself. We will see, what will happen.</p>
+<p><em>Write markdown, extract metadata,<br />
+your <a href="https://iamstarkov.com">Vladimir Starkov</a></em></p>
+
+      </article>
+      <footer class="article-footer">
+        ★ ★ ★ <br/>
+        If you found "commonmark-helpers is out!" useful, please share it to your <a href="https://twitter.com/intent/tweet?url=https://iamstarkov.com/commonmark-helpers-release/&amp;text=commonmark-helpers is out!&amp;related=iamstarkov">followers in Twitter</a> or <a href="https://www.facebook.com/sharer.php?u=http://iamstarkov.com/commonmark-helpers-release/&amp;t=commonmark-helpers is out!">friends in Facebook</a>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5540883fde2e2639c70007e9');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://track.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

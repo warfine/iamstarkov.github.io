@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="LTR" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Speed up your development with npm init command</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://iamstarkov.com/rss.xml" title="Vladimir Starkov" rel="alternate" type="application/rss+xml">
+    <link href="/styles.css" rel="stylesheet">
+    <meta property="og:site_name" content="Vladimir Starkov">
+    <meta property="article:author" content="https://iamstarkov.com/about/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@iamstarkov">
+    <meta property="description" content="npm has a great command npm init which allows you to create package.json
+in a second!">
+    <meta name="og:url" content="npm-init/">
+    <meta name="og:title" content="Speed up your development with npm init command">
+    <meta name="og:description" content="npm has a great command npm init which allows you to create package.json
+in a second!">
+  </head>
+  <body>
+    <div class="wrap"><a href="https://github.com/iamstarkov/iamstarkov.github.io/edit/premaster/2015-17-npm-init.md" class="edit-link">edit on github</a>
+      <article>
+        <h1>Speed up your development with <code>npm init</code> command</h1><i>
+          <time>21 april 2015</time></i><p>npm has a great command <code>npm init</code> which allows you to create <code>package.json</code>
+in a second!</p>
+<h2>npm init</h2>
+<p>Read the documentation for <a href="https://docs.npmjs.com/cli/init"><code>npm init</code></a> and for <a href="https://docs.npmjs.com/files/package.json"><code>package.json fields</code></a>. Awesome tools come with great responsibility. <a href="https://docs.npmjs.com/">Learn them!</a></p>
+<h2>init variables</h2>
+<p>Set it up! These init variables will be used everytime you run <code>npm init</code>
+and thus will save your time. Variables will be saved in <a href="https://docs.npmjs.com/files/npmrc"><code>.npmrc files</code></a>.</p>
+<p><code>npm set</code> is an shorthand alias for cli command <a href="https://docs.npmjs.com/cli/config"><code>npm config set</code></a>.
+As an example, this is how setting up looks like:</p>
+<pre><code>npm set init-author-email iamstarkov@gmail.com
+npm set init-author-name Vladimir Starkov
+npm set init-author-url /
+npm set init-license MIT
+npm set init-version 0.0.0
+</code></pre>
+<p>I prefer to use <code>0.0.0</code> init version; it lets me test the code in CI server
+before bumping the first major version.</p>
+<h2>GitHub shortcut expansion (user/repo)</h2>
+<p>When <code>npm init</code> will ask you about your git repository, type simply
+<code>user/repo</code> — npm is clever enough to expand the line
+into <code>https://github.com/user/repo</code>. npm will generate the repository, bugs,
+and homepage fields in this way:</p>
+<pre><code>&quot;repository&quot;: {
+  &quot;type&quot;: &quot;git&quot;,
+  &quot;url&quot;: &quot;https://github.com/user/repo&quot;
+},
+&quot;bugs&quot;: {
+  &quot;url&quot;: &quot;https://github.com/user/repo/issues&quot;
+},
+&quot;homepage&quot;: &quot;https://github.com/user/repo#readme&quot;
+</code></pre>
+<p><em>Use npm wisely, develop faster,</em><br />
+<em>your npm-inited <a href="/">Vladimir Starkov</a></em></p>
+
+      </article>
+      <footer class="article-footer">
+        ★ ★ ★ <br/>
+        If you found "Speed up your development with npm init command" useful, please share it to your <a href="https://twitter.com/intent/tweet?url=https://iamstarkov.com/npm-init/&amp;text=Speed up your development with npm init command&amp;related=iamstarkov">followers in Twitter</a> or <a href="https://www.facebook.com/sharer.php?u=http://iamstarkov.com/npm-init/&amp;t=Speed up your development with npm init command">friends in Facebook</a>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5540883fde2e2639c70007e9');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://track.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

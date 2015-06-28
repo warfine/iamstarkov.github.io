@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="LTR" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Why immutability matters</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://iamstarkov.com/rss.xml" title="Vladimir Starkov" rel="alternate" type="application/rss+xml">
+    <link href="/styles.css" rel="stylesheet">
+    <meta property="og:site_name" content="Vladimir Starkov">
+    <meta property="article:author" content="https://iamstarkov.com/about/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@iamstarkov">
+    <meta property="description" content="I’m reading Erlang book and there is a brilliant explanation
+why immutability matters.">
+    <meta name="og:url" content="why-immutability-matters/">
+    <meta name="og:title" content="Why immutability matters">
+    <meta name="og:description" content="I’m reading Erlang book and there is a brilliant explanation
+why immutability matters.">
+  </head>
+  <body>
+    <div class="wrap"><a href="https://github.com/iamstarkov/iamstarkov.github.io/edit/premaster/2015-26-why-immutability-matters.md" class="edit-link">edit on github</a>
+      <article>
+        <h1>Why immutability matters</h1><i>
+          <time>28 june 2016</time></i><p>I’m reading Erlang book and there is a brilliant explanation
+why immutability matters.</p>
+<blockquote>
+<p>Using immutable variables simplifies debugging. To understand why this is
+true, we must ask ourselves what an error is and how an error makes itself
+known.</p>
+<p>One rather common way that we discover that a program is incorrect is when
+we find that a variable has an unexpected value. Once we know which variable
+is incorrect, we just have to inspect the program to find the place where the
+variable was bound. Since Erlang variables are immutable, the code that
+produced the variable must be incorrect. In an imperative language, variables
+can be change many times, so every place where the variable was changed
+might be the place where the error occured. In Erlang there is only one place
+to look.</p>
+<p>At this point, you might wondering how it’s possible to program <em>without</em>
+mutable variables. How can we express something like  in Erlang?
+The Erlang way is to invent new variable whose name hasn’t been used
+before (say <code>X1</code>) and to write <code>X1 = X + 1</code>.</p>
+<p>— Joe Armstrong, <a href="http://www.amazon.com/dp/B00N4FF2L0/">&quot;Programming Erlang&quot;</a></p>
+</blockquote>
+<p><em>In state we trust,<br />
+Your mutable <a href="/">Vladimir Starkov</a></em></p>
+
+      </article>
+      <footer class="article-footer">
+        ★ ★ ★ <br/>
+        If you found "Why immutability matters" useful, please share it to your <a href="https://twitter.com/intent/tweet?url=https://iamstarkov.com/why-immutability-matters/&amp;text=Why immutability matters&amp;related=iamstarkov">followers in Twitter</a> or <a href="https://www.facebook.com/sharer.php?u=http://iamstarkov.com/why-immutability-matters/&amp;t=Why immutability matters">friends in Facebook</a>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5540883fde2e2639c70007e9');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://track.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="LTR" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>npm scripts basics</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://iamstarkov.com/rss.xml" title="Vladimir Starkov" rel="alternate" type="application/rss+xml">
+    <link href="/styles.css" rel="stylesheet">
+    <meta property="og:site_name" content="Vladimir Starkov">
+    <meta property="article:author" content="https://iamstarkov.com/about/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@iamstarkov">
+    <meta property="description" content="package.json can have scripts fields, which are basically an object similar to this one:">
+    <meta name="og:url" content="npm-scripts-basics/">
+    <meta name="og:title" content="npm scripts basics">
+    <meta name="og:description" content="package.json can have scripts fields, which are basically an object similar to this one:">
+  </head>
+  <body>
+    <div class="wrap"><a href="https://github.com/iamstarkov/iamstarkov.github.io/edit/premaster/2015-25-npm-scripts-basics.md" class="edit-link">edit on github</a>
+      <article>
+        <h1>npm scripts basics</h1><i>
+          <time>19 june 2015</time></i><p>package.json can have <a href="scripts"><code>scripts</code> fields</a>, which are basically an object similar to this one:</p>
+<pre><code>  &quot;scripts&quot;: {
+    &quot;name&quot;: &quot;command-to-run&quot;,
+    &quot;name1&quot;: &quot;command-to-run1&quot;,
+    &quot;name2&quot;: &quot;command-to-run2&quot;
+  }
+</code></pre>
+<p>npm does a really simple job: when you run <code>npm run smth</code>, npm searches &quot;smth&quot; in &quot;scripts&quot; object and runs appropriate <code>command-to-run</code>.</p>
+<h2>shortcuts: start and test</h2>
+<pre><code>npm start # npm run start
+npm test  # npm run test
+</code></pre>
+<p>These commands are common and widely accepted way to start and test nodejs applications or packages.</p>
+<h2>pre and post scripts</h2>
+<p>npm also can run some scripts right before or after others:</p>
+<ul>
+<li><code>pretest</code> will be executeted everytime before <code>test</code></li>
+<li><code>postpublish</code> will be executeted everytime after <code>publish</code></li>
+</ul>
+<p><em>Do u wanna talk about npm scripts?<br />
+Your npm-scripted <a href="https://iamstarkov.com">Vladimir Starkov</a></em></p>
+
+      </article>
+      <footer class="article-footer">
+        ★ ★ ★ <br/>
+        If you found "npm scripts basics" useful, please share it to your <a href="https://twitter.com/intent/tweet?url=https://iamstarkov.com/npm-scripts-basics/&amp;text=npm scripts basics&amp;related=iamstarkov">followers in Twitter</a> or <a href="https://www.facebook.com/sharer.php?u=http://iamstarkov.com/npm-scripts-basics/&amp;t=npm scripts basics">friends in Facebook</a>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5540883fde2e2639c70007e9');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://track.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

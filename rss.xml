@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Vladimir Starkov]]></title>
+        <description><![CDATA[Frontend blog from Vladimir Starkov]]></description>
+        <link>https://iamstarkov.com/</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sun, 28 Jun 2015 19:55:39 GMT</lastBuildDate>
+        <atom:link href="https://iamstarkov.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <copyright><![CDATA[MIT]]></copyright>
+        <language><![CDATA[en-us]]></language>
+        <managingEditor><![CDATA[iamstarkov@gmail.com (Vladimir Starkov)]]></managingEditor>
+        <webMaster><![CDATA[iamstarkov@gmail.com (Vladimir Starkov)]]></webMaster>
+        <category><![CDATA[frontend]]></category>
+        <category><![CDATA[css]]></category>
+        <category><![CDATA[typography]]></category>
+        <item>
+            <title><![CDATA[Why immutability matters]]></title>
+            <description><![CDATA[I’m reading Erlang book and there is a brilliant explanation
+why immutability matters.]]></description>
+            <link>https://iamstarkov.com/why-immutability-matters/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/why-immutability-matters/</guid>
+            <pubDate>Tue, 28 Jun 2016 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[npm scripts basics]]></title>
+            <description><![CDATA[package.json can have <a href="scripts"><code>scripts</code> fields</a>, which are basically an object similar to this one:]]></description>
+            <link>https://iamstarkov.com/npm-scripts-basics/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/npm-scripts-basics/</guid>
+            <pubDate>Fri, 19 Jun 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[iojs is joining the Node Foundation. What does it mean?]]></title>
+            <description><![CDATA[I really love iojs project and it’s impact on nodejs ecosystem. I love semver,
+frequent releases and open governance model. Also I didn’t love waiting
+for node@0.12 for ages. I pretty sure if iojs will not happen, then node@0.12
+will not happen either.]]></description>
+            <link>https://iamstarkov.com/iojs-and-node-foundation/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/iojs-and-node-foundation/</guid>
+            <pubDate>Sat, 16 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Just published get-tweets package]]></title>
+            <description><![CDATA[Get all tweets for target username.]]></description>
+            <link>https://iamstarkov.com/get-tweets-release/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/get-tweets-release/</guid>
+            <pubDate>Sat, 16 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weekly 20]]></title>
+            <description><![CDATA[In short: iojs is joining (new) Node, Elon Musk gives interview, video-selfies
+with flying lily, and all you need is PostCSS.]]></description>
+            <link>https://iamstarkov.com/weekly-20/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/weekly-20/</guid>
+            <pubDate>Sat, 16 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Gmail setup]]></title>
+            <description><![CDATA[I discovered that gmail is not very friendly by default. Gmail mark message as
+&quot;read&quot; only after 3 seconds, you cannot use it from keyboard and it have
+no preview for emails. But slow and abandoned gmail chat is turned on.
+Good try, gmail!]]></description>
+            <link>https://iamstarkov.com/gmail-setup/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/gmail-setup/</guid>
+            <pubDate>Tue, 12 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Deploy to GitHub pages from Travis CI]]></title>
+            <description><![CDATA[Imagine that you have open-source project, which site is hosting on github pages
+and you have &quot;edit on github&quot; button on this site. It’s great, because if you
+are lucky, you will get few pull-requests every week. On the other side you
+will need laptop every time, you want to deploy changes and, you know,
+it’s a bit annoying.]]></description>
+            <link>https://iamstarkov.com/deploy-gh-pages-from-travis/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/deploy-gh-pages-from-travis/</guid>
+            <pubDate>Sun, 10 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[commonmark-helpers is out!]]></title>
+            <description><![CDATA[<img src="https://i.imgur.com/CM0V0d4.png" alt="commonmark-helpers passing all the tests!" />]]></description>
+            <link>https://iamstarkov.com/commonmark-helpers-release/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/commonmark-helpers-release/</guid>
+            <pubDate>Sun, 10 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Renaming experience]]></title>
+            <description><![CDATA[<img src="https://i.imgur.com/q8LcWMw.jpg" alt="Squatters @ Squatters everywhere" />]]></description>
+            <link>https://iamstarkov.com/renaming-experience/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/renaming-experience/</guid>
+            <pubDate>Tue, 05 May 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Every technical article must have publish date]]></title>
+            <description><![CDATA[<img src="https://i.imgur.com/JrXX7wT.jpg" alt="New JS frameworks every day!" />]]></description>
+            <link>https://iamstarkov.com/articles-dates/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/articles-dates/</guid>
+            <pubDate>Thu, 30 Apr 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[About]]></title>
+            <description><![CDATA[I’m Vladimir Starkov; obsessed with frontend, typography and BEM and that’s
+why I’m one of the founders of <a href="http://getbem.com/">getbem.com</a>.]]></description>
+            <link>https://iamstarkov.com/about/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/about/</guid>
+            <pubDate>Wed, 29 Apr 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Speed up your development with npm init command]]></title>
+            <description><![CDATA[npm has a great command <code>npm init</code> which allows you to create <code>package.json</code>
+in a second!]]></description>
+            <link>https://iamstarkov.com/npm-init/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/npm-init/</guid>
+            <pubDate>Tue, 21 Apr 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Minimum viable blog]]></title>
+            <description><![CDATA[You should have ability to write it, readers — to read it.
+Content is a king. Spend time on writing, not on developing.]]></description>
+            <link>https://iamstarkov.com/mvb/</link>
+            <guid isPermaLink="true">https://iamstarkov.com/mvb/</guid>
+            <pubDate>Mon, 20 Apr 2015 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
